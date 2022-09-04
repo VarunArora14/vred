@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vred/common/shadow_button.dart';
+import 'package:vred/common/widgets/shadow_button.dart';
+import 'package:vred/constants/colors.dart';
+import 'package:vred/features/widgets/cashback_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +23,29 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFF1E2021),
-      body: Center(child: ShadowButton()),
+    return Scaffold(
+      backgroundColor: scaffoldColor,
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: const [
+          CashbackView(
+            value: 20,
+          ),
+          CashbackView(
+            value: 70,
+          ),
+          CashbackView(
+            value: 14,
+          ),
+          CashbackView(
+            value: 69,
+          ),
+          CashbackView(
+            value: 5,
+          ),
+        ],
+      )),
     );
   }
 }
