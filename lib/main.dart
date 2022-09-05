@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vred/common/widgets/shadow_button.dart';
 import 'package:vred/constants/colors.dart';
-import 'package:vred/features/widgets/cashback_view.dart';
+import 'package:vred/constants/temp_cashback.dart';
+import 'package:vred/screens/cashback_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +12,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return MaterialApp(
+      builder: (context, child) {
+        // pass custom behavior to all scrollable widgets and child cannot be null so pass empty container
+        // if empty child
+        return ScrollConfiguration(behavior: MyBehavior(), child: child ?? Container());
+      },
+      home: const HomePage(),
     );
+  }
+}
+
+// custom scroll behaviour to disable glow in entire app
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
   }
 }
 
@@ -23,29 +36,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: scaffoldColor,
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          CashbackView(
-            value: 20,
-          ),
-          CashbackView(
-            value: 70,
-          ),
-          CashbackView(
-            value: 14,
-          ),
-          CashbackView(
-            value: 69,
-          ),
-          CashbackView(
-            value: 5,
-          ),
-        ],
-      )),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: scaffoldColor,
+        body: CashbackScreen(
+          cashbackList: tempList,
+        ),
+      ),
     );
   }
 }
