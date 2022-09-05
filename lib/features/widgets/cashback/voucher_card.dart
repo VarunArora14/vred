@@ -4,7 +4,13 @@ class VoucherCard extends StatefulWidget {
   final String itemValue;
   final String voucherExpiry; // calculate the has expired or not based on this
   final String voucherCode; // unique for each voucher
-  const VoucherCard({Key? key, required this.itemValue, required this.voucherCode, required this.voucherExpiry})
+  final bool isExpired;
+  const VoucherCard(
+      {Key? key,
+      required this.itemValue,
+      required this.voucherCode,
+      required this.voucherExpiry,
+      required this.isExpired})
       : super(key: key);
 
   @override
@@ -16,8 +22,8 @@ class _VoucherCardState extends State<VoucherCard> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.fromLTRB(30, 5, 10, 20),
-      height: size.height * 0.2,
+      padding: const EdgeInsets.fromLTRB(30, 5, 10, 10),
+      height: size.height * 0.28,
       width: size.width * 0.9,
       decoration: BoxDecoration(
         color: Colors.orange[900],
@@ -42,13 +48,14 @@ class _VoucherCardState extends State<VoucherCard> {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               SizedBox(
-                width: size.width * 0.4,
-                child: Divider(
-                  color: Colors.grey[350],
+                width: size.width * 0.44,
+                child: const Divider(
+                  color: Colors.white54,
                   thickness: 1,
                   height: 20,
                 ),
@@ -65,6 +72,92 @@ class _VoucherCardState extends State<VoucherCard> {
               ),
             ],
           ),
+          Row(
+            children: [
+              SizedBox(
+                width: size.width * 0.4,
+                child: Text(
+                  'you won a voucher\nworth Rs${widget.itemValue}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: size.width * 0.22,
+              ),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(8), // Image border
+                  child: Image.asset(
+                    'assets/images/ajio.png',
+                    fit: BoxFit.cover,
+                    height: 40,
+                    width: 40,
+                  )),
+              const SizedBox(
+                width: 10,
+              ),
+              const SizedBox(
+                height: 50,
+                child: VerticalDivider(
+                  color: Colors.white54,
+                  thickness: 1,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Container(
+            height: 80,
+            width: size.width * 0.7,
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white60, width: 0.5),
+            ),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Text(
+                'your voucher code',
+                style: TextStyle(color: Colors.white60, fontSize: 10),
+              ),
+              const SizedBox(height: 5),
+              Center(
+                child: Text(
+                  widget.voucherCode,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () {
+                  debugPrint('voucher details pressed');
+                },
+                child: const Text(
+                  'Details',
+                  style: TextStyle(
+                      color: Colors.white,
+                      decoration: TextDecoration.underline,
+                      decorationStyle: TextDecorationStyle.dotted),
+                ),
+              ),
+              Text(
+                widget.isExpired ? 'ALREADY EXPIRED' : 'EXPIRES ON ${widget.voucherExpiry}',
+                style: const TextStyle(color: Colors.white70),
+              ),
+            ],
+          )
         ],
       ),
     );

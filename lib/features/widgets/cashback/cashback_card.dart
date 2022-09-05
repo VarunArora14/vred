@@ -47,8 +47,8 @@ class CashbackCard extends StatelessWidget {
             children: [
               SizedBox(
                 width: size.width * 0.4,
-                child: Divider(
-                  color: Colors.grey[350],
+                child: const Divider(
+                  color: Colors.white54,
                   thickness: 1,
                   height: 20,
                 ),
@@ -88,7 +88,8 @@ class CashbackCard extends StatelessWidget {
                   center: Alignment.center,
                   radius: 0.5,
                   // colors: [Color.fromARGB(255, 226, 220, 186), Color.fromARGB(255, 214, 193, 100)],
-                  colors: [Color.fromARGB(255, 226, 220, 186), Color.fromARGB(255, 230, 206, 102)],
+                  colors: [Color.fromARGB(255, 241, 227, 142), Color.fromARGB(255, 214, 193, 100)],
+                  // Color.fromARGB(255, 230, 206, 102)
                   tileMode: TileMode.mirror,
                 ).createShader(bounds),
                 child: const FaIcon(
@@ -98,10 +99,10 @@ class CashbackCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 25),
-              SizedBox(
+              const SizedBox(
                 height: 60,
                 child: VerticalDivider(
-                  color: Colors.grey[350],
+                  color: Colors.white54,
                   thickness: 1,
                 ),
               ),

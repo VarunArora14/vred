@@ -12,5 +12,5 @@ class CashbackModel {
     required this.voucherCode,
   });
 
-  // todo: add more fields such as details, desc, company etc
+  // todo: add more fields such as details, desc, expriry company etc
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:vred/common/enums/cashback_enum.dart';
 import 'package:vred/constants/colors.dart';
 import 'package:vred/features/widgets/cashback/cashback_card.dart';
@@ -14,11 +15,28 @@ class CashbackScreen extends StatefulWidget {
 }
 
 class _CashbackScreenState extends State<CashbackScreen> {
+  // format this date to dd-MM-yyyy
+  String voucherFormat(String voucherExpiry) {
+    var inputFormat = DateFormat('yyyy-MM-dd');
+    final DateTime voucherTime = inputFormat.parse(voucherExpiry);
+    final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    final String formatted = formatter.format(voucherTime);
+    return formatted;
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: scaffoldColor,
+          elevation: 0,
+          title: Text(
+            'Rewards History',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         backgroundColor: scaffoldColor,
         body: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (notification) {
@@ -44,7 +62,11 @@ class _CashbackScreenState extends State<CashbackScreen> {
                           : VoucherCard(
                               itemValue: temp.itemValue,
                               voucherCode: temp.voucherCode,
-                              voucherExpiry: temp.voucherExpiry),
+                              voucherExpiry: voucherFormat(temp.voucherExpiry),
+                              // if current time less the voucherExpire then isExpired is false
+                              isExpired: DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now())
+                              // DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now()),
+                              ),
                       SizedBox(
                         height: size.height * 0.025,
                       )
@@ -59,5 +81,3 @@ class _CashbackScreenState extends State<CashbackScreen> {
     );
   }
 }
-
-// return VoucherView() if voucher else cashbackView() based on enum values

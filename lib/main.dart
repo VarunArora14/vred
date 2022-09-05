@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:neopop/neopop.dart';
+import 'package:vred/common/enums/cashback_enum.dart';
+import 'package:vred/common/widgets/shadow_button.dart';
 import 'package:vred/constants/colors.dart';
 import 'package:vred/constants/temp_cashback.dart';
+import 'package:vred/models/cashback_model.dart';
 import 'package:vred/screens/cashback_screen.dart';
 
 void main() {
@@ -12,22 +17,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, child) {
-        // pass custom behavior to all scrollable widgets and child cannot be null so pass empty container
-        // if empty child
-        return ScrollConfiguration(behavior: MyBehavior(), child: child ?? Container());
-      },
-      home: const HomePage(),
+    return const GetMaterialApp(
+      home: HomePage(),
     );
-  }
-}
-
-// custom scroll behaviour to disable glow in entire app
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
-    return child;
   }
 }
 
@@ -36,13 +28,54 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: scaffoldColor,
-        body: CashbackScreen(
-          cashbackList: tempList,
+        child: Scaffold(
+      backgroundColor: scaffoldColor,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () => Get.to(
+                CashbackScreen(
+                  cashbackList: tempList,
+                ),
+                transition: Transition.cupertino,
+              ),
+              child: const ShadowButton(
+                height: 60,
+                width: 60,
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            NeoPopButton(
+              color: Colors.white,
+              onTapUp: () {
+                debugPrint('neopop button tapped');
+                tempList.add(
+                  CashbackModel(
+                    cashbackType: CashbackEnum.voucher,
+                    itemValue: "69",
+                    voucherExpiry: "2023-11-19",
+                    voucherCode: "ABC-ABBA-DABBA-JABBA",
+                  ),
+                );
+                debugPrint(tempList.length.toString());
+              },
+              child: SizedBox(
+                height: 50,
+                width: size.width * 0.7,
+                child: const Center(
+                  child: Text('Click to get cashback'),
+                ),
+              ),
+            )
+          ],
         ),
       ),
-    );
+    ));
   }
 }
