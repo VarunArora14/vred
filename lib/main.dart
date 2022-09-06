@@ -7,6 +7,7 @@ import 'package:vred/constants/colors.dart';
 import 'package:vred/constants/temp_cashback.dart';
 import 'package:vred/models/cashback_model.dart';
 import 'package:vred/screens/cashback_screen.dart';
+import 'package:vred/screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,12 +37,13 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
+            GestureDetector(
               onTap: () => Get.to(
                 CashbackScreen(
                   cashbackList: tempList,
+                  isVoucherScreen: false,
                 ),
-                transition: Transition.cupertino,
+                transition: Transition.downToUp,
               ),
               child: const ShadowButton(
                 height: 60,
@@ -72,7 +74,23 @@ class HomePage extends StatelessWidget {
                   child: Text('Click to get cashback'),
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: size.height * 0.05,
+            ),
+            NeoPopButton(
+              color: Colors.white,
+              onTapUp: () {
+                Get.to(const ProfileScreen(), transition: Transition.leftToRight);
+              },
+              child: SizedBox(
+                height: 50,
+                width: size.width * 0.7,
+                child: const Center(
+                  child: Text('Go to Profile'),
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vred/features/decorations/shadow_decoration.dart';
 
 class VoucherCard extends StatefulWidget {
   final String itemValue;
@@ -30,22 +31,7 @@ class _VoucherCardState extends State<VoucherCard> {
         shape: BoxShape.rectangle,
         border: Border.all(color: Colors.black, width: 3),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(
-            blurStyle: BlurStyle.normal,
-            color: Colors.white38,
-            spreadRadius: 1,
-            blurRadius: 15,
-            offset: Offset(-4, -4), // changes position of shadow
-          ),
-          BoxShadow(
-            blurStyle: BlurStyle.normal,
-            color: Colors.black87,
-            spreadRadius: 1,
-            blurRadius: 10,
-            offset: Offset(4, 4), // changes position of shadow
-          ),
-        ],
+        boxShadow: commonBoxShadow(),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +86,7 @@ class _VoucherCardState extends State<VoucherCard> {
                 width: 10,
               ),
               const SizedBox(
-                height: 50,
+                height: 60,
                 child: VerticalDivider(
                   color: Colors.white54,
                   thickness: 1,

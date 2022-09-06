@@ -8,7 +8,8 @@ import 'package:vred/models/cashback_model.dart';
 
 class CashbackScreen extends StatefulWidget {
   final List<CashbackModel> cashbackList;
-  const CashbackScreen({Key? key, required this.cashbackList}) : super(key: key);
+  final bool isVoucherScreen;
+  const CashbackScreen({Key? key, required this.cashbackList, required this.isVoucherScreen}) : super(key: key);
 
   @override
   State<CashbackScreen> createState() => _CashbackScreenState();
@@ -32,7 +33,7 @@ class _CashbackScreenState extends State<CashbackScreen> {
         appBar: AppBar(
           backgroundColor: scaffoldColor,
           elevation: 0,
-          title: Text(
+          title: const Text(
             'Rewards History',
             style: TextStyle(color: Colors.white),
           ),
@@ -44,34 +45,34 @@ class _CashbackScreenState extends State<CashbackScreen> {
             return true;
           },
           child: SingleChildScrollView(
-            child: Center(
+            child: SizedBox(
+              height: size.height,
               child: ListView.builder(
                 shrinkWrap: true, // inside list does not scroll else error
+                reverse: true, // show newest list item at top
                 physics: const NeverScrollableScrollPhysics(), // disable scroll on listview items
                 itemCount: widget.cashbackList.length,
                 itemBuilder: (BuildContext context, int index) {
                   var temp = widget.cashbackList[index];
-
-                  return Column(
-                    children: [
-                      SizedBox(
-                        height: size.height * 0.025,
-                      ),
-                      temp.cashbackType == CashbackEnum.cash
-                          ? CashbackCard(value: temp.itemValue)
-                          : VoucherCard(
-                              itemValue: temp.itemValue,
-                              voucherCode: temp.voucherCode,
-                              voucherExpiry: voucherFormat(temp.voucherExpiry),
-                              // if current time less the voucherExpire then isExpired is false
-                              isExpired: DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now())
-                              // DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now()),
-                              ),
-                      SizedBox(
-                        height: size.height * 0.025,
-                      )
-                    ],
-                  );
+                  debugPrint(temp.voucherExpiry);
+                  return (temp.cashbackType == CashbackEnum.cash && widget.isVoucherScreen == false)
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
+                          child: CashbackCard(value: temp.itemValue),
+                        )
+                      : (temp.cashbackType == CashbackEnum.voucher)
+                          ? Padding(
+                              padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
+                              child: VoucherCard(
+                                  itemValue: temp.itemValue,
+                                  voucherCode: temp.voucherCode,
+                                  voucherExpiry: voucherFormat(temp.voucherExpiry),
+                                  // if current time less the voucherExpire then isExpired is false
+                                  isExpired: DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now())
+                                  // DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now()),
+                                  ),
+                            )
+                          : Container();
                 },
               ),
             ),

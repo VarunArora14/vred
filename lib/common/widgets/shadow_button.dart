@@ -11,7 +11,24 @@ class ShadowButton extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      decoration: shadowButtonDecoration(BoxShape.rectangle, BorderRadius.circular(20)),
+      decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
+            Color.fromARGB(255, 56, 54, 54),
+            Color.fromARGB(255, 36, 35, 35),
+            Color.fromARGB(255, 27, 26, 26),
+            Color.fromARGB(255, 10, 10, 10)
+          ], stops: [
+            0.1,
+            0.3,
+            0.7,
+            0.9
+          ]),
+          color: Colors.grey[900],
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: commonBoxShadow()),
+
+      // shadowButtonDecoration(BoxShape.rectangle, BorderRadius.circular(20), Colors.grey.shade900),
       child: const RadiantGradientMask(child: Icon(Icons.card_giftcard_rounded, size: 30, color: Colors.white)),
     );
   }

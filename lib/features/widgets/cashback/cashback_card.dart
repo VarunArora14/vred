@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:vred/features/decorations/shadow_decoration.dart';
 
 class CashbackCard extends StatelessWidget {
   final String value;
@@ -17,22 +18,7 @@ class CashbackCard extends StatelessWidget {
         shape: BoxShape.rectangle,
         border: Border.all(color: Colors.black, width: 3),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(
-            blurStyle: BlurStyle.normal,
-            color: Colors.white38,
-            spreadRadius: 1,
-            blurRadius: 15,
-            offset: Offset(-4, -4), // changes position of shadow
-          ),
-          BoxShadow(
-            blurStyle: BlurStyle.normal,
-            color: Colors.black87,
-            spreadRadius: 2,
-            blurRadius: 15,
-            offset: Offset(4, 4), // changes position of shadow
-          ),
-        ],
+        boxShadow: commonBoxShadow(),
       ),
       child: Column(
         children: [
@@ -100,7 +86,7 @@ class CashbackCard extends StatelessWidget {
               ),
               const SizedBox(width: 25),
               const SizedBox(
-                height: 60,
+                height: 70,
                 child: VerticalDivider(
                   color: Colors.white54,
                   thickness: 1,
