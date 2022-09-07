@@ -45,36 +45,33 @@ class _CashbackScreenState extends State<CashbackScreen> {
             return true;
           },
           child: SingleChildScrollView(
-            child: SizedBox(
-              height: size.height,
-              child: ListView.builder(
-                shrinkWrap: true, // inside list does not scroll else error
-                reverse: true, // show newest list item at top
-                physics: const NeverScrollableScrollPhysics(), // disable scroll on listview items
-                itemCount: widget.cashbackList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  var temp = widget.cashbackList[index];
-                  debugPrint(temp.voucherExpiry);
-                  return (temp.cashbackType == CashbackEnum.cash && widget.isVoucherScreen == false)
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
-                          child: CashbackCard(value: temp.itemValue),
-                        )
-                      : (temp.cashbackType == CashbackEnum.voucher)
-                          ? Padding(
-                              padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
-                              child: VoucherCard(
-                                  itemValue: temp.itemValue,
-                                  voucherCode: temp.voucherCode,
-                                  voucherExpiry: voucherFormat(temp.voucherExpiry),
-                                  // if current time less the voucherExpire then isExpired is false
-                                  isExpired: DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now())
-                                  // DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now()),
-                                  ),
-                            )
-                          : Container();
-                },
-              ),
+            child: ListView.builder(
+              shrinkWrap: true, // inside list does not scroll else error
+              reverse: true, // show newest list item at top
+              physics: const NeverScrollableScrollPhysics(), // disable scroll on listview items
+              itemCount: widget.cashbackList.length,
+              itemBuilder: (BuildContext context, int index) {
+                var temp = widget.cashbackList[index];
+                return (temp.cashbackType == CashbackEnum.cash && widget.isVoucherScreen == false)
+                    ? Padding(
+                        padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.05),
+                        child: CashbackCard(value: temp.itemValue),
+                      )
+                    : (temp.cashbackType == CashbackEnum.voucher)
+                        ? Padding(
+                            padding:
+                                EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.05),
+                            child: VoucherCard(
+                                itemValue: temp.itemValue,
+                                voucherCode: temp.voucherCode,
+                                voucherExpiry: voucherFormat(temp.voucherExpiry),
+                                // if current time less the voucherExpire then isExpired is false
+                                isExpired: DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now())
+                                // DateTime.parse(temp.voucherExpiry).isBefore(DateTime.now()),
+                                ),
+                          )
+                        : Container();
+              },
             ),
           ),
         ),

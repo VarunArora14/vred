@@ -1,5 +1,6 @@
 import 'package:vred/common/enums/cashback_enum.dart';
 import 'package:vred/models/cashback_model.dart';
+import 'dart:core';
 
 List<CashbackModel> tempList = [
   CashbackModel(cashbackType: CashbackEnum.cash, itemValue: "200", voucherExpiry: "", voucherCode: ""),

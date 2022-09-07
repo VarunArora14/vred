@@ -18,7 +18,7 @@ class CashbackCard extends StatelessWidget {
         shape: BoxShape.rectangle,
         border: Border.all(color: Colors.black, width: 3),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: commonBoxShadow(),
+        boxShadow: commonOuterBoxShadow(),
       ),
       child: Column(
         children: [

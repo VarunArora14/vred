@@ -187,16 +187,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.sell,
-                            color: Colors.teal[400],
-                            size: 30,
+                          Image.asset(
+                            'assets/images/voucher.png',
+                            height: 31,
+                            width: 31,
+                            color: Colors.teal,
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
+                            padding: EdgeInsets.only(top: 10),
                             child: Text('vouchers you have won',
                                 style: TextStyle(color: Colors.white60, fontSize: 12)),
                           ),
@@ -230,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Container(
-                      width: size.width * 0.6,
+                      width: size.width * 0.7,
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,7 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           const Text(
                             'your CRIF credit score is $crif_score',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
                           ),
                           const Padding(
                             padding: EdgeInsets.symmetric(vertical: 10),

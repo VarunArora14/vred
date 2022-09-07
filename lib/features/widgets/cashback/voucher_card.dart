@@ -24,14 +24,14 @@ class _VoucherCardState extends State<VoucherCard> {
     final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.fromLTRB(30, 5, 10, 10),
-      height: size.height * 0.28,
+      height: size.height * 0.30,
       width: size.width * 0.9,
       decoration: BoxDecoration(
         color: Colors.orange[900],
         shape: BoxShape.rectangle,
         border: Border.all(color: Colors.black, width: 3),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: commonBoxShadow(),
+        boxShadow: commonOuterBoxShadow(),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +63,7 @@ class _VoucherCardState extends State<VoucherCard> {
               SizedBox(
                 width: size.width * 0.4,
                 child: Text(
-                  'you won a voucher\nworth Rs${widget.itemValue}',
+                  'you won a voucher\nworth Rs ${widget.itemValue}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -140,7 +140,7 @@ class _VoucherCardState extends State<VoucherCard> {
               ),
               Text(
                 widget.isExpired ? 'ALREADY EXPIRED' : 'EXPIRES ON ${widget.voucherExpiry}',
-                style: const TextStyle(color: Colors.white70),
+                style: const TextStyle(color: Colors.white70, fontSize: 12),
               ),
             ],
           )
