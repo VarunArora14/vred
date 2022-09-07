@@ -114,7 +114,7 @@ class IciciCardView extends StatelessWidget {
           height: size.height * 0.25,
           width: size.width * 0.83,
           decoration: BoxDecoration(
-              gradient: purpleGradient,
+              gradient: redGradient,
               // color: Colors.blue,
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(20)),

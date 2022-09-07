@@ -7,20 +7,33 @@ import 'package:vred/features/decorations/shadow_decoration.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class CreditCardWidget extends StatelessWidget {
-  CreditCardWidget({super.key});
+  final String cardCompany;
+  final String firstName;
+  final String lastName;
+  final String cardNumber;
+  final String overdueValue;
+
+  const CreditCardWidget(
+      {super.key,
+      required this.cardCompany,
+      required this.firstName,
+      required this.lastName,
+      required this.cardNumber,
+      required this.overdueValue});
 
   @override
   Widget build(BuildContext context) {
     // TODO: use ref here to get the card data and show data based on cardmodel values
-    const cardCompany = "icici";
-    const firstName = "VARUN";
-    const lastName = "ARORA";
-    const cardNumber = "5589 83XX XXXX 9161";
-    const overdueValue = "5783.33";
+    // const cardCompany = "icici";
+    // const firstName = "VARUN";
+    // const lastName = "ARORA";
+    // const cardNumber = "5589 83XX XXXX 9161";
+    // const overdueValue = "5783.33";
     Map<String, dynamic> creditViewMap = {
-      'amex': const AmexCardView(cardNumber: cardNumber, firstName: firstName, lastName: lastName),
-      'icici': const IciciCardView(cardNumber: cardNumber, firstName: firstName, lastName: lastName),
-      'hdfc': const HdfcCardView(cardNumber: cardNumber, firstName: firstName, lastName: lastName)
+      'amex': AmexCardView(
+          cardNumber: cardNumber, firstName: firstName.toUpperCase(), lastName: lastName.toUpperCase()),
+      'icici': IciciCardView(cardNumber: cardNumber, firstName: firstName, lastName: lastName),
+      'hdfc': HdfcCardView(cardNumber: cardNumber, firstName: firstName, lastName: lastName)
     };
     final size = MediaQuery.of(context).size;
     return Container(

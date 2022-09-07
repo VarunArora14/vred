@@ -50,7 +50,7 @@ const purpleGradient = LinearGradient(begin: Alignment.topLeft, end: Alignment.b
 ]);
 
 const greyBlueGradient = LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
-  Color(0xFF7976B8),
+  Color.fromARGB(255, 113, 110, 172),
   Color(0xFF605E9D),
   Color(0xFF535081),
   Color(0xFF4D4A75),

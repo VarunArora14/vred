@@ -93,7 +93,7 @@ class BlueShadowButton extends StatelessWidget {
           child: Text(
             'Pay now',
             style: TextStyle(
-                color: Colors.grey.shade400,
+                color: Colors.grey.shade300,
                 fontFamily: GoogleFonts.lato().fontFamily,
                 letterSpacing: 1,
                 fontWeight: FontWeight.bold),
@@ -143,7 +143,7 @@ class DarkShadowButton extends StatelessWidget {
           child: Text(
             'Manage',
             style: TextStyle(
-                color: Colors.grey.shade400,
+                color: Colors.grey.shade300,
                 fontFamily: GoogleFonts.lato().fontFamily,
                 letterSpacing: 1,
                 fontWeight: FontWeight.bold),
