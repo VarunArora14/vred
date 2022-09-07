@@ -22,3 +22,11 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+// Run the app with --cache-sksl turned on to capture shaders in SkSL:
+
+// flutter run --profile --cache-sksl
+// If the same app has been previously run without --cache-sksl, then the --purge-persistent-cache the flag may be needed:
+
+// flutter run --profile --cache-sksl --purge-persistent-cache

@@ -153,52 +153,5 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+// prefer listview builder as it is more efficient in loading those items currently viewed
 // todo: check shader animaton jank here  => https://docs.flutter.dev/perf/shader, https://docs.flutter.dev/perf
-/*
-[
-    Padding(
-      padding: const EdgeInsets.only(left: 32.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('welcome, $firstName',
-              style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'explore and claim\nthe membership perks reserved for you',
-            style: TextStyle(color: Colors.white38, fontSize: 12),
-          )
-        ],
-      ),
-    ),
-    Padding(
-      padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.05),
-      child: const CreditCardWidget(
-          cardCompany: "amex",
-          cardNumber: "1483 29XX XXXX 8890",
-          firstName: "VARUN",
-          lastName: "ARORA",
-          overdueValue: "3433.56"),
-    ),
-    Padding(
-      padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.05),
-      child: const CreditCardWidget(
-          cardCompany: "hdfc",
-          cardNumber: "5589 83XX XXXX 9161",
-          firstName: "VARUN",
-          lastName: "ARORA",
-          overdueValue: "0"),
-    ),
-    Padding(
-      padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.05),
-      child: const CreditCardWidget(
-          cardCompany: "icici",
-          cardNumber: "3493 72XX XXXX 1022",
-          firstName: "VARUN",
-          lastName: "ARORA",
-          overdueValue: "1024.32"),
-    )
-  ];
-*/
