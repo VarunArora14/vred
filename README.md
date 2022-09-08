@@ -1,16 +1,15 @@
 # vred
 
-A new Flutter project.
+A cred clone being made in Flutter inspired from it's UI and functionality
 
-## Getting Started
+Currently UI is being prepared then functioanlity will be added
 
-This project is a starting point for a Flutter application.
+## Some Screenshots displaying current status
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/56734311/189045715-9c026896-6534-4400-aaa8-c337d224fa28.png" height="800" width="400" align="center">
+<br><br><br>
+<img src="https://user-images.githubusercontent.com/56734311/189045879-ace33aa0-3331-40cd-8630-e62d9853859a.png" height="800" width="400" align="center">
+<br><br><br>
+<img src="https://user-images.githubusercontent.com/56734311/189045972-ddd6e963-7e68-431c-b631-52f84cf8b06c.png" height="800" width="400" align="center">
+</p>
